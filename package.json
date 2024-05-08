@@ -1,0 +1,14 @@
+{
+  "name": "fake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fake.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sse-fake-server": "^1.0.4"
+  }
+}
