@@ -19,6 +19,8 @@ const configs = [
   }
 ]
 
+const providers = ['Coinbase', 'Kraken', 'Fixer', 'Lightnet', 'dLocal', 'mainsys', 'Flutterwave'];
+
 for (let config of configs) {
   const { currency, port } = config;
   createServer(currency, port, client => {
@@ -33,7 +35,7 @@ for (let config of configs) {
         id,
         version: 1,
         providers_contrib: {
-          "": 1
+          name: providers[Math.floor(Math.random() * 7)],
         },
         rates_count,
         outliers_perc: 0,
@@ -45,7 +47,7 @@ for (let config of configs) {
         rate_quote: generateRandomDecimal(currency),
       };
 
-      client.send(data);
+      client.send(JSON.stringify(data));
     }, 2000);
   });
 }
