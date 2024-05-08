@@ -1,4 +1,4 @@
-const {sseServer} = require('sse-fake-server');
+const createServer = require('sse-fake-server');
 const { v4: uuidv4 } = require('uuid');
 
 const generateRandomDecimal = (currency) => {
@@ -7,8 +7,6 @@ const generateRandomDecimal = (currency) => {
   const formattedValue = randomValue.toFixed(15);
   return formattedValue;
 }
-
-let rates_count = 0;
 
 const configs = [
   {
@@ -23,7 +21,8 @@ const configs = [
 
 for (let config of configs) {
   const { currency, port } = config;
-  sseServer(currency, port, client => {
+  createServer(currency, port, client => {
+    let rates_count = 0;
     // Every 2 seconds send data to client
     setInterval(() => {
       const id = uuidv4();
