@@ -45,7 +45,7 @@ for (let config of configs) {
         rate_quote: generateRandomDecimal(currency),
       };
 
-      client.send(JSON.stringify(data));
+      client.send(data);
     }, 2000);
   });
 }
